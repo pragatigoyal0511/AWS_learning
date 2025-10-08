@@ -276,3 +276,33 @@ EFS → Best for many servers needing shared access to files in real time.
 
 
 
+
+
+->  what is meaning of taking snapshot of data volume? as Mentioned in course, we can take snapshot of data volume
+
+First, what is data volume?
+
+When you attach storage (like EBS) to your EC2 instance, that storage is called a volume — basically, your virtual hard disk in the cloud.
+
+📘 Example:
+You launch an EC2 instance → attach a 100 GB EBS volume → store your app files, database, logs, etc. there.
+That EBS volume = your data volume.
+
+
+Now,What is a Snapshot?
+
+A snapshot is a backup copy of your EBS volume taken at a specific moment in time.
+Think of it like taking a photo of your disk — capturing exactly what’s inside it right now.
+
+It includes:
+All data stored on the volume (files, OS data, DB)
+The volume’s structure and metadata (size, filesystem info)
+
+
+All EBS snapshots are stored in Amazon S3, internally managed by AWS.
+You don’t see them in your S3 buckets directly — AWS manages them separately.
+They benefit from S3’s durability (11 nines!).
+That means they’re safe even if your EC2 or EBS volume is deleted.
+
+
+Basically hamare data ka backup rakh lete hain. 10 baje kuch files hain..unka backup, then agar kuch add delete hua hai uska backup.
