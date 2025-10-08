@@ -1,4 +1,4 @@
-EC2 - Elastic Compute Cloud: Amazon EC2 is a service from AWS that lets you create virtual computers (servers) on the internet — whenever you want, for as long as you want.
+->EC2 - Elastic Compute Cloud: Amazon EC2 is a service from AWS that lets you create virtual computers (servers) on the internet — whenever you want, for as long as you want.
 
 
 Imagine you want to run a website or an app.
@@ -29,3 +29,7 @@ You can rent it for 1 hour or 1 year.
 Choose the size you want.
 Leave anytime.
 You don’t worry about maintenance — Amazon handles that.
+
+
+
+->
