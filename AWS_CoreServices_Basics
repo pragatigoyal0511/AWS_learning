@@ -122,7 +122,7 @@ ECS and EKS are like smart managers who make sure all your containers are always
 Storage in AWS is all about saving and retrieving data reliably, durably, and efficiently.
 AWS offers multiple storage options depending on your needs (object, block, file, archival, etc.).
 
-1. Object storage - Amazon S3
+1. -> Object storage - Amazon S3
 Use case: Storing files, backups, images, videos, logs, static websites.
 Key points:
 
@@ -176,6 +176,31 @@ it should be quick retrieval
 
 So, the data AWS automatically moves objects between different access tiers
 
-3. 
+Eg: logs, reports, user-generated data.
+
+3. Standard IA : Infrequent access : Data you access rarely but need to retrieve quickly when required.
+Best for: Backups, disaster recovery, old project files
+
+4. S3 One Zone-IA : Infrequent access, but not critical data (okay if lost if one AZ fails). 
+Data is stored in single availability zones.
+Best for: Secondary backups, easily reproducible data, non-critical logs.
+
+5. S3 Glacier : Archival data — you rarely access it (e.g., yearly backups).
+Retrieval takes minutes to hours (depending on retrieval option)
+Best for: Historical data, regulatory archives, old media.
+
+6. S3 Glacier Deep Archive: Long-term cold storage (you might never access it).
+Retrieval takes hours (up to 12 hours)
+Best for: Legal records, long-term archives, inactive backups.
+
+
+| Storage Class               | Access Frequency | Availability | Cost        | Retrieval Speed  | Typical Use          |
+| --------------------------- | ---------------- | ------------ | ----------- | ---------------- | -------------------- |
+| **S3 Standard**             | Frequent         | 99.99%       | 💰💰        | Immediate        | Active data          |
+| **S3 Intelligent-Tiering**  | Variable         | 99.9–99.99%  | 💰→💵       | Immediate        | Unpredictable access |
+| **S3 Standard-IA**          | Infrequent       | 99.9%        | 💵          | Immediate        | Backups              |
+| **S3 One Zone-IA**          | Infrequent       | 99.5%        | 💵          | Immediate        | Non-critical data    |
+| **S3 Glacier**              | Rare             | 99.99%       | 💵          | Minutes–Hours    | Archives             |
+| **S3 Glacier Deep Archive** | Very Rare        | 99.99%       | 💵 (lowest) | Hours (up to 12) | Long-term archives   |
 
 
