@@ -204,3 +204,75 @@ Best for: Legal records, long-term archives, inactive backups.
 | **S3 Glacier Deep Archive** | Very Rare        | 99.99%       | 💵 (lowest) | Hours (up to 12) | Long-term archives   |
 
 
+
+2. -> AWS Elastic Block storage:
+EBS = Block-level storage for EC2 instances.
+
+👉 Think of each EBS volume as a virtual hard drive attached to a cloud server (EC2).
+
+What type of data is stored in EBS?
+Operating system files (boot volume for EC2)
+Databases (like MySQL, PostgreSQL)
+Application data that needs fast read/write
+Temporary data (logs, cache, transactions)
+
+Why EBS (and not S3)?
+EC2 needs a block device to function — just like your laptop can’t boot from Google Drive!
+Databases require low-latency, small read/writes (e.g., updating a few bytes in a record).
+S3 doesn’t support partial file edits — you’d have to re-upload the whole file.
+
+In short:
+EBS is used when your application or OS needs fast, random access to data — like a disk.
+
+
+
+3. -> AWS Elastic File Storage:
+EFS = File storage that multiple EC2 instances can share.
+
+👉 Think of it like a shared network folder that all your servers can open and use together.
+
+What type of data is stored in EFS?
+Shared config files
+Web content (images, scripts) used by many servers
+Application data shared by multiple EC2 instances
+Home directories or project files in a team environment
+
+Why EFS (and not S3)?
+Apps expect file system access (like /mnt/data/file.txt)
+You can read/write/update files instantly from multiple EC2s simultaneously
+S3 isn’t a mounted file system — it’s object storage (you upload/download whole files via API, not open/edit like a drive)
+
+In short:
+
+EFS is used when multiple servers need shared, live file access — like a LAN network drive.
+
+
+------------------
+How S3, EBS AND EFS are there? why can't S3  be used , why we need EFS , EBS?
+inke purposes alag hain.
+
+| Layer   | What You See                      | What AWS Does Behind the Scenes                                                |
+| ------- | --------------------------------- | ------------------------------------------------------------------------------ |
+| **EBS** | You attach a “volume” to your EC2 | Stores your data on a specific SSD in one AZ                                   |
+| **EFS** | You mount a shared folder         | Stores data on distributed NAS systems across AZs                              |
+| **S3**  | You upload files to a bucket      | Spreads and replicates your data across many servers and disks in multiple AZs |
+
+
+Each AWS storage service exists for different access patterns:
+
+S3 → Best for storing and retrieving whole files (no edits in place).
+
+EBS → Best for apps and databases that read/write small parts of data constantly.
+
+EFS → Best for many servers needing shared access to files in real time.
+
+
+
+| Service | Think of it as                  | How you use it                   |
+| ------- | ------------------------------- | -------------------------------- |
+| **EBS** | Hard drive inside your computer | Save and modify files constantly |
+| **EFS** | Office shared drive             | Everyone accesses same files     |
+| **S3**  | Dropbox or Google Drive         | Upload/download full files only  |
+
+
+
