@@ -90,3 +90,27 @@ Main benefit	No server setup, auto scaling, cost-efficient
 
 We will now explore serverless application use cases. Web applications, data processing applications,
 chatbots, and IT automation are all kinds of solutions that can be run on serverless technologies.
+
+
+->container
+
+A container is like a small box that holds everything which your application requires to run like code,libraries,settings etc..
+
+Container Orchestration means: like a traffic controller or like manager who manages these containers, ki ye kin EC2 instances pe 
+deploy honge, to check if they are healthy, to monitor them, if needed add extra, if not required remove to save cost, start/stop/restart automatically
+and make sure everything is healthy. This is container orchestration.
+
+AWS sercices which do this container orchestration are:
+1. ECS : Elastic Container Service - AWS’s own orchestration system — simple, fully managed by AWS.
+2. EKS : Elastic Kubernetes Service- A managed version of Kubernetes, an open-source orchestration tool used worldwide.
+
+Both ECS and EKS help you:
+
+Schedule your containers → Decide which EC2 machine should run each one.
+Maintain them → Restart or replace if a container crashes.
+Scale → Add more containers or EC2 machines when traffic increases.
+Monitor → Check container health, performance, and logs from one place.
+Control → Set rules (how many copies of each container, what memory, etc.)
+
+💬 In simple words:
+ECS and EKS are like smart managers who make sure all your containers are always running smoothly, automatically, and efficiently.
