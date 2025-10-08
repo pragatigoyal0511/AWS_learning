@@ -1,3 +1,12 @@
+1. Compute
+
+Amazon Elastic Compute Cloud (Amazon EC2) provides scalable computing capacity in the Amazon Web Services (AWS) Cloud. In the compute area, there are various options for the types of resources you might want to launch, such as the following:
+
+Virtual machines
+Containers
+Batch processing compute resources
+Serverless compute
+
 ->EC2 - Elastic Compute Cloud: Amazon EC2 is a service from AWS that lets you create virtual computers (servers) on the internet — whenever you want, for as long as you want.
 
 
@@ -32,4 +41,48 @@ You don’t worry about maintenance — Amazon handles that.
 
 
 
-->
+->Serverless compute with AWS Lambda
+
+AWS Lambda is a service that lets you run your code without needing to manage any servers.
+
+You just write your code → upload it to AWS → and AWS runs it automatically when needed.
+
+👉 You don’t create or manage EC2 instances (computers).
+👉 You don’t worry about scaling or maintenance — AWS handles that.
+👉 You only pay when your code actually runs.
+
+That’s why it’s called “serverless compute” —
+you still use servers, but AWS manages them behind the scenes, so you don’t have to.
+
+💡 Simple Example:
+
+Let’s say you want to run some code every time a user uploads a photo to your app.
+
+Without Lambda (using EC2):
+You’d have to keep an EC2 server running 24/7 to detect uploads and process them.
+You pay even when no one is uploading.
+
+With Lambda:
+You just write a function (say, resizeImage())
+Connect it to the photo upload event (like S3 bucket trigger)
+Whenever someone uploads a photo, Lambda automatically runs your code.
+When it’s done, it stops — and you only pay for the few seconds it ran.
+
+🧩 So how is Lambda related to Compute Services?
+
+AWS has a family of Compute services —
+all of them provide computing power, but in different ways:
+
+Service	Description	You manage servers?	Example use
+EC2	Virtual machines (you control everything)	✅ Yes	Host websites, apps
+ECS / EKS	Containers (you manage container clusters)	⚙️ Partially	Microservices, Docker
+Lambda	Serverless compute (just upload code)	❌ No	Small functions, automation, event-driven tasks
+
+So, Lambda is part of AWS Compute Services, but it’s the most hands-free one — you just focus on the code, not the infrastructure.
+
+🧠 In short:
+Concept	Meaning
+AWS Lambda	Run your code without managing servers
+Type	Serverless compute service
+You pay for	Only the time your code runs (per millisecond)
+Main benefit	No server setup, auto scaling, cost-efficient
