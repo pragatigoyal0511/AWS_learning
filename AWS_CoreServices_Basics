@@ -1,0 +1,31 @@
+EC2 - Elastic Compute Cloud: Amazon EC2 is a service from AWS that lets you create virtual computers (servers) on the internet — whenever you want, for as long as you want.
+
+
+Imagine you want to run a website or an app.
+
+Normally, you’d have to:
+Buy a computer (server)
+Install Linux or Windows
+Set up software
+Keep it running 24/7
+
+With Amazon EC2, you just:
+Go to the AWS console
+Click “Launch EC2 Instance”
+Choose how powerful you want the computer to be (RAM, CPU, etc.)
+And boom — in less than a minute, you have a running virtual computer online.
+
+You can connect to it just like your own computer and run anything — website, app, database, etc.
+
+Elastic : because its capacity can be increased or decreased. We only pay as we use, just like paying for electricity.
+CLoud: This computer availble on cloud, online
+Compute : This is computational server. Cloud-based computing power
+
+
+Real-world comparison:
+
+It’s like renting a hotel room (computer) instead of buying a house (server).
+You can rent it for 1 hour or 1 year.
+Choose the size you want.
+Leave anytime.
+You don’t worry about maintenance — Amazon handles that.
