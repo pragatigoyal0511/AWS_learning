@@ -86,3 +86,7 @@ AWS Lambda	Run your code without managing servers
 Type	Serverless compute service
 You pay for	Only the time your code runs (per millisecond)
 Main benefit	No server setup, auto scaling, cost-efficient
+
+
+We will now explore serverless application use cases. Web applications, data processing applications,
+chatbots, and IT automation are all kinds of solutions that can be run on serverless technologies.
