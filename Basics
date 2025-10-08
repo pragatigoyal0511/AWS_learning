@@ -1,0 +1,62 @@
+AWS CLOUD Basics:
+
+->AWS : Amazon Web Services
+
+AWS Cloud : Amazon provides services over internet. AWS is like online toolbox which lets us use computers, storage, otehr technical stuff online. We do not need to buy hardware and 
+maintain them. We can focus on our business work, core application and all this we can buy online.
+Think of it this way 👇
+Normally, if you want to run a website or an app, you’d have to buy computers (servers), store files, install software, manage backups, etc.
+That’s expensive, takes space, and needs experts to manage.
+
+AWS Cloud says —
+“Don’t buy or maintain all that. Just use our computers and services through the internet whenever you need them — and pay only for what you use.”
+
+So instead of buying a whole laptop, it’s like renting a super powerful computer in the cloud for a few minutes or hours.
+
+
+
+What are its benefits?
+1. We pay as we use. If we want to use initially 1 server, we will only pay for that, then we need to scale and require more resources, then we will pay accordingly.
+2. We do not need to make larger investments , since agar hum buy karenge toh hum ho sakta hai kam ya jyada buy kar lein and then usko set up karein usmein bhi time jaayga, usko maintain 
+krein like hamesha up rahe and all, aisa infra ke liye like cooling systems and all set up karein, bahut needs badh jaati hai, hamein maintain karne ke liye log chahyea honge unko hire karein
+, so if we buy it on cloud, we are saved from lot of investment and management.
+3. we can provision exactly what type and size when needed (dynamic abilities). Aaj RAM 2GB chhayea, kal 4GB vo ho jaayga. We need MAC OS, Windows OS vo hojaayga, we need more server
+vo ho jaayga. 
+
+
+
+Example:
+
+Imagine you want to start a YouTube-like app.
+
+Without AWS:
+You’d need to buy 100 servers, rent a data center, hire IT staff, and spend crores of rupees.
+
+With AWS:
+You just open your AWS account, create servers online, store videos in AWS storage (called S3), and only pay for what people actually use.
+
+
+
+
+->AWS Global infrastructure:
+Imagine AWS as big bank chain that has branches all over the world.
+
+
+Similarly, AWS multiple regions mein hoga jaise banks multiple cities mein hote hain.
+
+1. Region : big area where AWS has its setup
+
+And jis tarah ek city mein, bank branches alag alag jagah pe hoti hain, similarly ek region mein multiple availability zones hote hain
+
+Why do they exist?
+So that users can keep data closer to their customers (for faster speed) and follow local data rules.
+
+2. Availability Zones (AZ): Now, agar ek branch mein let say it catches fire, then we have another branch which will work as it is..won't get affected. Toh this makes
+data available all time. App will never go down.
+
+3. Data center
+
+In each AZ, we have atleast 1 data center which has thousands of servers. Server room inside the building.
+
+why required?
+Where computers actually live
