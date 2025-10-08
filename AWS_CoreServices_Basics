@@ -114,3 +114,68 @@ Control → Set rules (how many copies of each container, what memory, etc.)
 
 💬 In simple words:
 ECS and EKS are like smart managers who make sure all your containers are always running smoothly, automatically, and efficiently.
+
+
+
+2. Storage
+
+Storage in AWS is all about saving and retrieving data reliably, durably, and efficiently.
+AWS offers multiple storage options depending on your needs (object, block, file, archival, etc.).
+
+1. Object storage - Amazon S3
+Use case: Storing files, backups, images, videos, logs, static websites.
+Key points:
+
+S3 = Simple Storage Service
+Stores objects (files) in buckets
+
+
+Amazon S3 is a scalable object storage service.
+It lets you store and retrieve any amount of data (images, videos, backups, logs, etc.) from anywhere over the internet.
+
+Think of it like a massive online hard drive managed entirely by AWS — but instead of folders and files, it uses buckets and objects.
+
+Core Concepts
+1. Buckets
+
+A bucket is like a folder that stores your data (objects).
+Every file (object) must belong to one bucket.
+
+Each bucket has a unique name globally (not just in your account).
+Example: myapp-photos-bucket
+
+2. Objects
+
+The actual data you store — files like images, videos, documents, logs, etc.
+Each object has:
+Key (the file name or path)
+Value (the data)
+Metadata (info about the object)
+Version ID (if versioning is enabled)
+
+Example:
+Bucket: myapp-photos
+Object Key: 2025/vacation/photo1.jpg
+
+
+how does it work?
+We create bucket. We upload file into that bucket.
+We can access and download them using AWS console, Rest APIs 
+
+
+Now, Amazon S3 offers multiple storage classes. Bascically, hamare usage ke hisab se alag alag storage options hain ki how often we want to access
+data and acordingly we pay.
+
+
+1. S3 Standard - used when we want to store frequently accessed data and want frequent retrieval 
+Example: websites, active apps, frequent reads/writes.
+Here, data is stored accross multiple AZs.
+
+2. S3 IA - Intelligent tiering (Auto cost optimization)- when we are not sure how often we would have to access data, but when we have to access it
+it should be quick retrieval
+
+So, the data AWS automatically moves objects between different access tiers
+
+3. 
+
+
