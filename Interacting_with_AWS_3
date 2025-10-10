@@ -1,0 +1,44 @@
+How to interact with AWS?
+
+there are 3 ways:
+1. AWS management console: Initially, we all start with this. Here we can select the region, the service which we want to lauch, give some 
+names and required config and then proceed for launch.
+2. AWS CLI : In case of console, while creating multiple instaces, we go through multiple screen, we might miss something in our config or
+something smal;l but important. Sometimes, we might have to do same job everyday by going through those screens. So, like in
+production enviornment where we want to minimize risk of humar error, we do it via comand line interface. We can say, its preffred way. We have
+commands with AWS syntax to interact with aws services. Single line commands mein error kam hogi. Kuch repeated kaam hain, toh uske liye scripts 
+bana lo.
+
+Now, CLI either we can download the tool and then start the terminal and then use commands to interact
+or AWS also offers AWS Cloudhsell, wahan pe bhi we can write commands to get our things done.
+
+
+example : command like
+
+aws s3api list-buckets -> seems aws env mein s3 jo ki storage hota hai, buckets ko list kardo.. my understanding
+
+You will get a response similar to the following one, listing the buckets in your AWS accounts:
+
+Response:
+{
+    "Owner": {
+        "DisplayName": "tech-essentials", 
+        "ID": "d9881f40b83adh2896eb276f44ffch53677faec805422c83dfk60cc335a7da92"
+    }, 
+    "Buckets": [
+        {
+            "CreationDate": "2023-01-10T15:50:20.000Z", 
+            "Name": "aws-tech-essentials"
+        }, 
+        {
+            "CreationDate": "2023-01-10T16:04:15.000Z", 
+            "Name": "aws-tech-essentials-employee-directory-app"
+        } 
+    ]
+}
+
+3. AWS SDKs
+API calls to AWS can also be performed by running code with programming languages. You can do this by using AWS SDKs. SDKs are open source and maintained by AWS for the most popular programming languages, 
+such as C++, Go, Java, JavaScript, .NET, Node.js, PHP, Python, Ruby, Rust, and Swift.
+
+3. 3rd way is AWS SDKs. - Here, 
