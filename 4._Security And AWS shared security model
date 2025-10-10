@@ -1,1 +1,21 @@
+Shared Security model - matlab, AWS and customer noth are responsible for security
+
+HOW?
+
+AWS ki responsibility hai poore aws set up ko secure karna..to secure the physical hardware, regions, AZs, etc.. and also to secure  the
+software like services offered by as..like compute,storage,databases,virtualization layer etc.. Any upgrades, patching required would be taken 
+care by AWS itself.
+
+So, basically security of the cloud
+
+
+Whereas
+
+Customer is responsible of security in the cloud. Security of your workloads. Apne data ko khud secure karo.
+When you use some service, security configurations jo use karne hain khud lagao and secure karo. Firewall vagarh
+DAta ko secure using encrytion and all.
+Who can access what, all these security needs to be taken care by customer itself.
+Like if we select the region for aws, which is not compliant to the company for security purpose then its our responsibility and not aws ki.
+
+Every service offered by aws might have different security required. Accordingly, jo hum use karein, uske according security lagani hogi.
 
