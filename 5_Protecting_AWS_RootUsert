@@ -1,0 +1,21 @@
+When we first access the AWS account, we have the identity username and password. 
+With this root user we have all the access related to AWS account.
+If somehow, this credentials gets compromised, then boom anything can happen..
+
+Therefore, to secure its good to have Multi factor Authentication..usmein...ab 2 cheez ho gai
+something you know - that is user name passowrd/pin
+something you have - MFA device jispe koi pin hogi ya kuch
+
+MFA also done using something you are - like finger print biometric and aall
+
+
+AWS mein account hone ke baad, to access AWS api using cli or api we must have access keys
+access key id
+secret access key
+
+This is like having basic auth cred to access any backend api..ye aur secure kar deti hai, taaki only valid users can access this..
+
+If you are not using, then better to delete the access keys from console managment section.
+
+And also, if you want to use, use from another user with certain level of permissions, so that root user ko toh sab access hota hai, vo kam use
+karo, aapko everyday use mein root user ki cheezein toh nahin chahyea hoti hain..
