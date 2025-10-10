@@ -1,0 +1,33 @@
+->AWS Global Infrastructure 
+
+In AWS, regions are independent of each other. Without customer's consent, data is not replicated in any other region.
+When you decide which AWS Region to host your applications and workloads, consider four main aspects:
+latency, price, service availability, and compliance.
+
+So, when we want to choose a region we go in below way
+1. Compliance: If our enterprise demands that customer data should be in this territory then it is period. No need to think anything else
+then that geographic location is would be our region.
+2. Latency: Then our factor comes of latency. If our application demands low latency, then our IT resources should be near to user base.
+Let say my user base is in Sydney and I have chosen the AWS set up region as in UK. Then it will be slower in response to users than the one
+if we had chosen some region near to Sydney. Since request aaygi and then response jaayga to such far away it will add to some time.
+3. Pricing : Since prices vary depending on region as AWS ko set up karne ke liye region mein kya cost aati hai like real estates,
+wahan pe customs, wahan pe equipment buy costs, wahan pe internet connectivity and multiple other things, toh uske according aws service ki
+price hogi in any region. Therefore, ye factor dekhna hoga.
+4. Service availability: Service which we want is available in that region or not, since any new service which AWS launches is not rolled 
+out to all regions, it starts with 1 and then goes on.
+
+
+
+Scope of AWS services:
+1. Region based scope hai if kisi AWS ki service ka- toh Amazon dekh lega for high availability and resiliency, since vo apneaap multiple
+AZs mein apne data ko rakh lega
+If region based scope nahin hai, we have to choose the AZ, then we should choose atleaset 2 AZs taaki ek destroy ho toh dossre se hamara 
+application available ho to take over the traffic.
+
+
+Edge locations
+Edge locations are global locations where content is cached. For example, if your media content is in London and you want to share video files 
+with your customers in Sydney, you could have the videos cached in an edge location closest to Sydney. This would make it possible for your
+customers to access the cached videos more quickly than accessing them from London. 
+Currently, there are over 400+ edge locations globally.
+Amazon CloudFront delivers your content through a worldwide network of edge locations.
