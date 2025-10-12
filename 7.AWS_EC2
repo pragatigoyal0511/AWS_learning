@@ -1,0 +1,5 @@
+EC2 :
+
+
+EC2 instances are live instantiations (or versions) of what is defined in an AMI(Amazon Machine Image), as a cake is a live instantiation of a cake recipe. If you are familiar with software development, you can also see this kind of relationship between a class and an object. 
+In this case, the AMI is how you model and define your instance. The EC2 instance is the entity you interact with, where you can install your web server and serve your content to users.
