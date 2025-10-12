@@ -1,0 +1,61 @@
+AWS - IAM - Idenity and access management
+
+AWS Identity and Access Management (IAM) is an AWS service that helps you manage access to your AWS account and resources. It also provides a centralized view of who 
+and what are allowed inside your AWS account (authentication), and who and what have permissions to use and work with your AWS resources (authorization).
+
+
+IAM user - Created directly inside AWS system. Username and password hote hain, this verifies our identity.
+
+We give IAM policy to IAM user -> To manage access and provide permissions to AWS services and resources, you create IAM policies and attach them to an IAM identity.
+Whenever an IAM identity makes a request, AWS evaluates the policies associated with them.
+jo ki define karta hai ki kya action allowed hai kya nahin kis resource ko..
+{
+"Version": "2012-10-17",
+"Statement": [{
+"Effect": "Allow",
+"Action": "*",
+"Resource": "*"
+}]
+}
+
+
+Now, creating users in AWS is easy and manageable if we have few, but let say we to create thousands of users then it becomes tedious to manage,
+ki kis user ko kya permission hai, fir usko role change hua for uski permissions edit karo and company se leave hua fir usko hatao. Usko koi aur let say developer ko kpi aur kaam bhi
+karwana hai fir vo permission de, itne sab logon mein ye manage karna bahut mushkil ho jaayga
+
+
+IAM groups: It is collection of users.
+Isliye groups aay, ki user groups banado, inpe attach kardo IAM policies which defines ki is group ko kaunse AWS resources ke actions ki permission hai kisko nahin..
+toh koi bhi let say developer add hua, us user ko developer group mein add kardo, same permissions lag jaayngi..
+Kisiko Networking group mein add kia, usko vo permissions mil kaayngi..
+Easier to manage aise 
+For example, if you have a developer inside the developers group who makes a request to an AWS service, AWS evaluates any policies attached to the developers group and any policies attached to the developer user to determine if the request should be allowed or denied.
+
+
+->Think of “User” and “Role” as Identities, and “Policy” as Permissions
+
+IAM User → Permanent human
+Created manually inside AWS.
+Has username + password / access keys.
+Used for direct logins by people.
+
+🤖 IAM Role → Temporary identity
+Not tied to a single person.
+Can be “assumed” by trusted entities: EC2, Lambda, or even external users via federation.
+Has no permanent credentials — AWS gives temporary keys each time.
+
+
+
+Jaise EC2 instance wants to request read/Write with S3, now since they are all aws resources inside aws ssytem does not mean it can directly call them. The request needs to be
+signed authenticated then only requst serve hogi.This signing process happens programmatically and allows AWS to verify your identity when a request is made and run through various security
+processes to ensure a request is legit.
+
+
+Let say EC2 instance ke liye ek role banaya and usko IAM policy de dete hain ki isko S3 ka read write access dedo,
+Now jab ec2 will connect with s3, toh ek tarah se temporary credentials to verify the identity.
+
+IAM roles are identities in AWS that like an IAM user also have associated AWS credentials used to sign requests. However, IAM users have usernames and passwords 
+as well as static credentials whereas IAM roles do not have any login credentials like a username and password and the credentials used to sign requests 
+are programmatically acquired, temporary in nature, and automatically rotated
+
+->
