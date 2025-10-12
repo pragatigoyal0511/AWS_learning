@@ -89,6 +89,7 @@ AWS Account 2: Production
 
 10 employees
 You go to IAM Identity Center, and you add users (e.g., Pragati, Riya, Raj) and groups (like “Developers”, “Admins”).
+Har group mein user ko baar baar daalne ki bajay..  har user ko ek baar banaya and usko group se associate kar dia, and us group ki kuch permissions hain vo isko mil gai
 
 Then in IAM Identity Center, you say:
 “Developers can access the Development account with limited permissions.”
