@@ -107,3 +107,88 @@ AWS doesn’t know what software you install.
 AWS doesn’t automatically maintain your OS or apps.
 
 So the responsibility for keeping the OS secure falls on you.
+
+
+-> AWS fargate
+AWS Fargate is a serverless compute engine for containers.
+
+Jaise containers ko run karne ke liye EC2 instance pe deploy karte hain..EC2 instance is the platform, toh usi tarah serverless compute platform is AWS fargate.
+
+1️⃣ First — Recap: How Containers Run Normally
+
+When you use ECS or EKS, containers need some compute power underneath to actually run.
+Usually, this means:
+
+You launch a few EC2 instances (these are the “container hosts”).
+ECS or EKS then places your containers on those EC2s.
+You manage:
+EC2 instance sizes.
+Patching OS.
+Scaling up/down.
+Monitoring utilization.
+
+So even with containers, you’re still managing servers behind the scenes.
+
+2️⃣ The Problem
+
+Developers said:
+
+“We love containers! But we don’t want to manage EC2s or clusters anymore — we just want our containers to run automatically.”
+
+That’s where AWS Fargate comes in.
+
+3️⃣ What is AWS Fargate?
+
+AWS Fargate is a serverless compute engine for containers.
+That means:
+You run containers without managing any EC2 servers.
+
+AWS automatically:
+Provides the compute infrastructure.
+Launches your containers.
+Scales them up/down.
+Manages patching, networking, security updates.
+
+You only tell:
+“Here’s my container image.”
+“It needs 2 vCPUs and 4 GB RAM.”
+
+…and AWS Fargate runs it. You pay only for the CPU/memory your container actually uses.
+
+🧩 4️⃣ Fargate Works With ECS & EKS
+
+Fargate isn’t a separate orchestrator — it’s a compute option inside ECS or EKS.
+
+
+
+So you choose whether your containers run on:
+Your own EC2 instances, or
+Fargate (AWS-managed).
+
+
+
+6️⃣ Example
+
+Let’s say you have a web app container:
+
+You build the container → push it to Amazon ECR. Elastic Compute Registry
+
+You define in ECS:
+
+Which image to run.
+How much CPU/memory.
+How many copies (tasks).
+
+You choose Fargate launch type.
+
+AWS:
+Allocates compute.
+Runs the container.
+Monitors and scales it.
+
+Charges you only for the time it’s running.
+
+👉 You never touch EC2 at all.
+
+In One Line:
+Fargate = “Run my containers, don’t ask me about servers.”
