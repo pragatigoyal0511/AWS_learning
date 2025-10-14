@@ -1,1 +1,109 @@
+How Compute Evolved in AWS?
 
+| Stage                      | What You Manage                         | Example    | What Problem It Solved             | What Problem Still Remained                  |
+| -------------------------- | --------------------------------------- | ---------- | ---------------------------------- | -------------------------------------------- |
+| **EC2 (Virtual Machines)** | You manage **servers**                  | Amazon EC2 | No need for physical hardware      | But you still patch OS, scale, monitor, etc. |
+| **Containers (ECS/EKS)**   | You manage **apps + container runtime** | ECS / EKS  | Easier app packaging, faster start | Still need to manage cluster, scaling, cost  |
+| **Serverless**             | You manage **only code**                | AWS Lambda | No infrastructure to manage        | Limited control over runtime, timeouts       |
+
+
+
+So, Serverless = next level of simplification.
+
+Why Serverless Came?
+Even with containers, you still had to:
+
+Run EC2s or clusters under ECS/EKS.
+Pay for them even when apps are idle.
+Handle scaling up/down.
+Monitor CPU/memory and tune sizes.
+
+Developers said:
+“I just want to run my function or app logic, not manage servers or containers!”
+
+AWS listened — and introduced Serverless Compute, starting with AWS Lambda.
+
+
+What “Serverless” Actually Means?
+“Serverless” doesn’t mean no servers exist 😄
+It means:
+
+You don’t manage or even see the servers. AWS does everything for you.
+No provisioning EC2s.
+No container clusters.
+No scaling setup.
+You only upload your code.
+
+AWS:
+Decides where to run it.
+Automatically scales it up/down.
+Charges only when it runs.
+
+
+->Example to Understand:
+
+->Before (with EC2)
+You rent a computer 24x7.
+Even if you get 1 visitor, you still pay for the whole day.
+You install OS, Python, security patches, etc.
+
+🧩 With Containers
+
+You rent 1 computer and run multiple apps.
+Better utilization, but still always on.
+You still manage the container cluster.
+
+🧩 With Serverless (Lambda)
+You don’t rent a computer at all.
+You just say: “Run this function when user clicks a button.”
+AWS runs it for a few milliseconds, then stops.
+You pay only for those milliseconds.
+
+✅ No idle cost
+✅ No patching
+✅ Auto scale to millions instantly
+
+
+5️⃣ Example: AWS Lambda (Serverless Compute)
+
+You upload your code (in Python, Node.js, Java, etc.).
+You define a trigger (API Gateway, S3 upload, DynamoDB event, etc.).
+AWS Lambda runs your code only when triggered.
+
+You pay per request + compute time (milliseconds).
+
+Example:
+
+When a user uploads an image to S3:
+S3 triggers a Lambda.
+Lambda resizes the image.
+Lambda stops.
+
+You pay for only those few seconds.
+
+
+When Not to Use Serverless?
+It’s not perfect — avoid it when:
+
+You need long-running tasks (since Lambda has max 15-min runtime).
+You need custom OS/network setups.
+You need super low-latency responses (for high-frequency trading, etc.).
+You need full control over the environment.
+
+Then you go back to ECS/EKS/EC2.
+
+
+
+why is user responsible for os security updates in ec2 when it comes installed?
+How EC2 works
+
+Remember:
+EC2 is Infrastructure as a Service (IaaS).
+AWS provides virtual hardware, networking, and the option to choose an operating system.
+But once the OS is installed, you are effectively running a full computer — like a regular laptop or server.
+
+That means:
+AWS doesn’t know what software you install.
+AWS doesn’t automatically maintain your OS or apps.
+
+So the responsibility for keeping the OS secure falls on you.
