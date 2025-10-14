@@ -192,3 +192,59 @@ Charges you only for the time it’s running.
 
 In One Line:
 Fargate = “Run my containers, don’t ask me about servers.”
+
+
+-> AWS Lambda
+
+What AWS Lambda Is
+
+👉 AWS Lambda is a serverless compute service that lets you run your code without managing servers or containers.
+
+You only give your function (small piece of code) —
+AWS handles:
+
+The servers,
+Scaling,
+Execution,
+Availability, and
+Billing (only when it runs).
+
+You never think about infrastructure — not even containers (jo hum fargate mein dekhte hain)
+
+
+2️⃣ How It Works
+
+You:
+
+Write a function (e.g. in Python, Node.js, Java, etc.).
+
+Upload it to AWS Lambda.
+Tell AWS when it should run — like:
+When an image is uploaded to S3.
+When someone calls an API Gateway endpoint.
+When a new record appears in DynamoDB.
+AWS automatically runs your code for just that event.
+
+When done → Lambda stops → you stop paying.
+
+
+✅ No servers
+✅ No clusters
+✅ Pay only for the seconds used
+
+6️⃣ When to Use AWS Lambda?
+
+✅ Event-driven workloads
+Like:
+Upload to S3 → process file
+API request → return data
+DynamoDB insert → trigger computation
+
+✅ Short tasks
+Each Lambda runs max 15 minutes.
+
+✅ Automatic scaling
+Handles 1 request or 1 million — automatically.
+
+✅ Cost efficiency
+Pay only for run time — not idle time.
