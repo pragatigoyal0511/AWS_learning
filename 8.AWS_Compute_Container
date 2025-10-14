@@ -156,3 +156,109 @@ So — each system speaks a different language between the user space and kernel
 
 
 
+->Amazon ECS and Amazon EKS
+
+If you’re trying to manage your compute at a large scale, you should consider the following:
+
+•How to place your containers on your instances
+•What happens if your container fails
+•What happens if your instance fails
+•How to monitor deployments of your containers
+
+This coordination is handled by a container orchestration service.
+AWS offers two container orchestration services: Amazon Elastic Container Service (Amazon ECS) and Amazon Elastic Kubernetes Service (Amazon EKS).
+
+
+-> why now requirement of ECS and eks came?
+The Problem: Managing Many Containers
+
+Imagine you’re a developer running:
+
+1 container → easy.
+100 containers → hard!
+
+You now need to handle:
+Where to run each container (on which EC2?)
+Restart if one crashes.
+Scale up/down automatically.
+Load balancing (distribute traffic evenly).
+Update containers with zero downtime.
+
+You could try to do all this manually — but it’s a nightmare.
+That’s why we need container orchestration systems.
+
+🧭 Enter Container Orchestration
+
+“Orchestration” means — a tool that automatically:
+
+Launches containers.
+Schedules them on the right servers.
+Restarts if something fails.
+Monitors health and scaling.
+
+There are two main orchestrators in AWS world:
+Amazon ECS (Elastic Container Service)
+Amazon EKS (Elastic Kubernetes Service)
+
+Let’s understand both in plain language 👇
+
+1. ECS
+A fully managed container orchestration service by AWS.
+
+ECS automatically:
+
+Launches containers (based on Docker images).
+Decides where to place them (on EC2 or Fargate).
+Restarts if they crash.
+Scales up/down as needed.
+
+🔹 You define:
+
+What containers to run (in a task definition).
+How many copies (replicas).
+What CPU/memory each needs.
+Then ECS handles the rest.
+
+🔹 How It Runs:
+
+You can run ECS containers on:
+EC2 instances (you manage the servers), or
+AWS Fargate (serverless — AWS manages everything underneath).
+
+🧠 Think of ECS as:
+
+AWS’s simpler, integrated solution for container orchestration (managing container services).
+
+
+2. EKS
+
+A managed Kubernetes service by AWS.
+Kubernetes (K8s) is an open-source container orchestrator — created by Google, used worldwide.
+
+What It Does:
+
+Kubernetes can do the same as ECS — scheduling, scaling, healing containers —
+but it’s not AWS-specific.
+You can run Kubernetes anywhere — AWS, Azure, Google Cloud, or on-premises.
+
+EKS = AWS runs and manages the Kubernetes control plane for you.
+
+You just define:
+Pods (containers),
+Deployments,
+Services,
+and EKS takes care of running them.
+
+
+Example Scenario
+
+Say you want to deploy your Python web app as containers.
+You can:
+
+Create Docker image of your app.
+Push it to Amazon ECR (Elastic Container Registry).
+
+Then choose:
+Use ECS to run it easily on AWS.
+Or use EKS if you already use Kubernetes tools.
+
