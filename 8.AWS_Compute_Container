@@ -125,3 +125,34 @@ same machine mein cahalne ke liye kuch problems aasakti hun due to conflicting v
 
 But agar container use kia toh ek app mein oython 11.x pacakage kar dia and doose mein 12.x, kabhi kuch updates bhi kiye toh dono mein apne apne
 dono isloated hain, koi interference nahin hai, dono badhiya se cahalenge ek hi EC2 instance mein
+
+
+
+
+-> what is kernel and user space is like ?
+💡 Analogy: The Restaurant 🍽️
+Role	                   OS Term	        Example
+🧑‍🍳 Chef in the kitchen	Kernel	       Handles actual cooking (hardware work)
+👩‍💼 Waiter            	System call	     Passes orders safely between customer and chef
+🧍 Customer	         User space (apps) Makes requests (“I want food!”)
+
+Customers (apps) can’t enter the kitchen directly (can’t touch hardware).
+
+They tell the waiter (system call).
+The waiter asks the chef (kernel) to do it safely.
+This separation prevents chaos (apps from crashing or damaging hardware).
+
+-> why can't we use windows user space with linux kernal?
+ because the “contract” between user space and kernel — called system calls — are completely different.
+
+| Part                                     | Linux                                                   | Windows                                               |
+| ---------------------------------------- | ------------------------------------------------------- | ----------------------------------------------------- |
+| **Kernel type**                          | Linux kernel (open-source, Unix-style)                  | Windows NT kernel (closed-source, Microsoft-specific) |
+| **System calls (API to talk to kernel)** | POSIX system calls (e.g., `fork()`, `exec()`, `open()`) | Windows API (e.g., `CreateProcess`, `ReadFile`, etc.) |
+| **User space**                           | GNU tools, bash, apt, etc.                              | Windows tools, registry, explorer.exe, etc.           |
+
+So — each system speaks a different language between the user space and kernel.
+
+
+
+
