@@ -1,0 +1,127 @@
+AWS : Containers - one of the category of Virtual machines like EC2, containers and serverless. here, we will look for Containers.
+
+
+Why EC2 was not sufficient? why need to Containers came?
+In case of EC2, when we launch EC2 instance, we have the full virtual machine which will host our application which already has an operating system installed.
+Then we install: 
+1. Python (if our app needs) jaise we saw when we launch ec2 instance in demo, we saw that user script mein sab likha tha ki yahan se zip of our application download karo,unzip karo,
+python install karo etc..
+
+2. any libraries which our app requires
+3. our application code
+
+
+EC2= [Full OS + Python + Your app] - this becomes very heavy..
+
+
+so, in ec2 -> It has its own operating system (Ubuntu, Amazon Linux, etc.)
+
+You can install anything on it (Python, Node.js, DB, etc.)
+You have full control
+So yes — you can run apps on EC2 directly.
+
+
+Now, what is the problem with EC2, which containers solve?
+
+With EC2, deploying apps is heavy - since full operating system, libraries and app code - GB of data. It slower to start (takes minutes to boot whereas for containers seconds )
+,Each app often needs a separate EC2.
+if we have 10 app, since aajkal multiple services hoti hain , then 10 EC2 instances.
+
+Whereas containers,
+Instead of giving each app a whole OS, containers:
+Share the same host OS kernel
+Only isolate the app + its dependencies
+Start in seconds, not minutes
+Use fewer resources
+
+
+In case of containers - it is very light weight- it is like pack everything required to run a app in an container and now run it anywhere.
+run multiple containers on same ec2 instance and they will run independently
+
+
+Now, the question arises, 
+Q1.how come container is light weight? 
+Q2. What is meant by you can run anywhere as in container and ebverywhere it would behave the same? why can't this be true in case of ec2.
+Q3. can't we run multiple apps on 1 ec2 instance just like we run mukltiple applications using containers in 1 ec2 instance?
+
+
+Q1.how come container is light weight? 
+Ans 1. Containers are jo app ko run karne ke liye chahyea dependecies,libraries, application code, os image -> sabko ek container mei pack kardo.
+ye light weight isliye hojata hai kyonki yahan hum OS ki image daal rahe hain..not the complete OS. Image is just 200-300 MB whwereas complete OS is in GBs.
+
+ye image kya hai? poore os mein kya hota hai? kya isko fir like ubuntu ki os version dala toh jis system pe dala uspe poora ubuntu nahin chahayea?
+container =
+[Your app + its dependencies + a tiny OS layer]
+
+Why Containers Don’t Need a Full OS
+
+Because the main part of the OS that talks to hardware (called kernel) is shared between all containers on the same machine.
+Each container only brings the minimal part it needs (commands, libraries, etc.) — This is the image
+not the entire OS.
+
+Full Ubuntu = Kernel + User Space
+So, in containers we have user space -- All the tools and libraries users interact with eg commands like ls, apt etc..
+Containers share the kernel from the host machine. And therefore yes, of we have ubuntu image in container then it would work with any machine with linux kernel be it debbian
+ubuntu, linux etc.. but not on windows..
+meri undersytanding mein computer ke hardware se baat karne wala environment toh hogaya kernel.. and user space ho gaya language jismein sabki apni apni commands hain..
+
+Q2. What is meant by you can run anywhere as in container and ebverywhere it would behave the same? why can't this be true in case of ec2.
+Ans. Yes, beacuse container has everything in 1 pacakage which app requires to run. I would behave the same. 
+
+
+When you say “app”, it needs:
+
+A certain version of Python or Node.js
+Some libraries
+A certain OS version
+Environment variables or configurations
+
+If you run that app on:
+Your laptop (Windows)
+A test server (Linux)
+AWS (different Linux version)
+
+➡️ Sometimes it fails — because something is slightly different between environments.
+
+This is called the “It works on my machine” problem 😅
+
+Containers solve this.
+
+They say:
+
+“Don’t depend on what the machine already has.
+Pack everything the app needs inside one small box — and run that box anywhere.”
+
+That small box = container.
+
+It includes:
+Your app code
+Its dependencies
+Configurations
+Runtime environment
+
+So whether you run it:
+On your laptop
+On AWS EC2
+On Google Cloud
+On any server
+
+It runs exactly the same, because the box carries everything it needs inside.
+
+Containers share the kernel from the host machine. And therefore yes, of we have ubuntu image in container then it would work with any machine with linux kernel be it debbian
+ubuntu, linux etc.. but not on windows..
+
+Toh we can run it anywhere, sabkuch ek pacakage mein hai jo bhi app ko chahyea all will have the same. Otherwise ho sakta hai slighly diff verison ke karan mere laptop pe chale and kahin aur na cahle.
+
+
+Q3. can't we run multiple apps on 1 ec2 instance just like we run mukltiple applications using containers in 1 ec2 instance?
+Ans.
+Ab let suppose meri application 2 servoices se bani
+one working with Python version 11.x
+Another working with Python 12.x
+
+Now, in case of ec2..whan mujhe oS milta hai, and baaki apan khud install karte hain.. 2 alag alag version daale python ke
+same machine mein cahalne ke liye kuch problems aasakti hun due to conflicting verisons, toh better hai alag alag ec2 instance use karlein
+
+But agar container use kia toh ek app mein oython 11.x pacakage kar dia and doose mein 12.x, kabhi kuch updates bhi kiye toh dono mein apne apne
+dono isloated hain, koi interference nahin hai, dono badhiya se cahalenge ek hi EC2 instance mein
