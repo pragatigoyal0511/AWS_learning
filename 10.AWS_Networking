@@ -49,3 +49,83 @@ The higher the number after the /, the smaller the number of IP addresses in you
 kyonki fix digits badh gay toh option bache hue 32-fix digits = kam ho jaaynge toh less options.
 
 In AWS, the smallest IP range you can have is /28, which provides 16 IP addresses. The largest IP range you can have is a /16, which provides 65,536 IP addresses.
+
+
+
+->VPC 
+Virtual Private Cloud
+Ye ek tarah se hamara network mil jata hai ki ismein taaki koi aur traffic ni aane paay, jo apan chahate hain apni application ke liye jo apan define karein wahi hi aay..
+
+A virtual private cloud (VPC) is an isolated network that you create in the AWS Cloud, similar to a traditional network in a data center. 
+
+VPC banate waqt hamein choose karne hote hain below factors:
+0. name of the factor
+1. region select karna hota hai (as jaise humne dekha tha ki hum akhan apni application depliy karna chahte hain vo region hamein hi dekhna hota hai based on compliance,
+pricing, latency and availability)
+2. We have to give the Ip address range in CIDR notation - This determines the size of your network.
+
+Each VPC can have up to five CIDRs: one primary and four secondaries for IPv4. Each of these ranges can be between /28 (in CIDR notation) and /16 in size.
+
+Q. What “Primary” CIDR Means
+
+When you first create a VPC —
+you must give one CIDR block — this is called the primary CIDR.
+
+Example:
+10.0.0.0/16 ← this is your primary CIDR block.
+
+All your subnets will take portions (like /24, /26) from this block.
+
+Q. Why Would You Add “Secondary” CIDR Blocks?
+
+Sometimes, your original CIDR runs out of IPs —(toh jaise neeche dekhenge toh aur ranges add kar dia by changing last 8 bits value to 1 to 4 from the first 16 jo fixed hain..)
+maybe you planned 10.0.0.0/24 (just 256 IPs) and filled them all.
+
+Instead of creating a new VPC,
+AWS lets you add more CIDR ranges (up to 4 extra) to the same VPC.
+
+These new ones are called secondary CIDR blocks.
+
+So your VPC could have:
+| CIDR Type   | Example CIDR | Purpose             |
+| ----------- | ------------ | ------------------- |
+| Primary     | 10.0.0.0/16  | Main network range  |
+| Secondary 1 | 10.1.0.0/16  | Additional IP range |
+| Secondary 2 | 10.2.0.0/16  | Additional IP range |
+| Secondary 3 | 10.3.0.0/16  | Additional IP range |
+| Secondary 4 | 10.4.0.0/16  | Additional IP range |
+
+
+-> Ab VPC ke ander hum subnets bana sakte hain.. jinko apne VPC ki range mein se IPs de sakte hain
+Why subnets ?
+taaki hum ye usmein granular level pe secure kar sakein.
+Jo application server ka access hamein public ko dena hai use public subnet mein daal denge
+jo servers like database, kisiko access ni dena hota toh hum use provate subnet mein daal dete hain
+
+Now, subnet banane ke liye
+1. hamein vpc choos karna hoga hamara jiske ander suubnt banaynge.i.e VPC that you want your subnet to live in—in this case: VPC (10.0.0.0/16)
+2. Availability Zone that you want your subnet to live in—in this case: Availability Zone 1
+3. IPv4 CIDR block for your subnet, which must be a subset of the VPC CIDR block—in this case: 10.0.0.0/24
+
+
+When you launch an EC2 instance, you launch it inside a subnet, which will be located inside the Availability Zone that you choose.
+
+
+->High availability with a VPC 
+
+we craete ubnets as in 1 AZ to another AZ as well, taaki if by chance 1 AZ fails, everything safe in another AZ
+
+
+
+->Reserved IPs
+
+For AWS to configure your VPC appropriately, AWS reserves five IP addresses in each subnet. These IP addresses are used for routing, Domain Name System (DNS), and network management.
+
+
+->Internet gateway
+
+jaise hamara modem hamare computer ko internet se conne ct karta hai, vaise internet gateway hamare vPC ko internet se connect karta hai..
+
+-> Virtual private Gateway
+
+ab we wnat ki sirf office ka traffic aana chahyea hum VPG use karnege.
