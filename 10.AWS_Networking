@@ -1,0 +1,51 @@
+Networking is how you connect computers around the world and allow them to communicate with one another. 
+
+Without the correct address, postal workers cannot properly deliver the letter. 
+In the digital world, computers handle the delivery of messages in a similar way. This is called routing.
+Now, jaise we used to send letter in old times to communicate with other person, what we used to do?
+We used send letters, which had below 3 parts
+1. the letter inside
+2. from section - who is sending the letter with complete address
+3. to section - for whom the letter is addressed to with complete address
+
+Now address has house no, street, city, state , pincode like this
+
+
+
+So, in computer world, its the IP address which denotes kis computer se baat karni hai.
+To properly route your messages to a location, you need an address. Just like each home has a mailing address, each computer has an IP address. 
+However, instead of using the combination of street, city, state, zip code, and country, the IP address uses a combination of bits, 0s and 1s.
+
+
+Example of 32 bit ip address
+11000000 10101000 00000001 00011110 is a 32-bit address written in binary format.
+
+Now, this is total 8+8+8+8 = 32 bits
+
+->IPv4 notation:
+
+these 32 bits are grouped into groups of 8 bits, also called octets. Each of these groups is converted into decimal format separated by a period.
+
+An IPv4 address is written in decimal digits made up of four eight bit fields separated by a period.
+An IPv4 address, for example, 192.168.1.30 is converted from four groups of eight bits.
+
+
+-> Classless Inter-Domain Routing (CIDR)  notation:
+If we want to express range of IP address tph kaise karenge?
+192.168.1.0 and 192.168.1.255, how can you do that?
+
+One way is to use CIDR notation. CIDR notation is a compressed way of representing a range of IP addresses. Specifying a range determines how many IP addresses are available to you.
+CIDR notation is shown here.
+192.168.1.0/24  -> slash ke baad wala batata hai kitni fixed binary digits hain..8+8+8 fix ho gai..ab remaining 8 mein 1/0 aa sakte hain..toh total 256 combinations.
+
+
+The number after the forward slash denotes how many bits in an IP address are fixed.
+
+It begins with a starting IP address and is separated by a forward slash (the / character) followed by a number.
+The number at the end specifies how many of the bits of the IP address are fixed. In this example, the first 24 bits of the IP address are fixed. 
+The rest (the last 8 bits) are flexible.
+
+The higher the number after the /, the smaller the number of IP addresses in your network. For example, a range of 192.168.1.0/24 is smaller than 192.168.1.0/16.
+kyonki fix digits badh gay toh option bache hue 32-fix digits = kam ho jaaynge toh less options.
+
+In AWS, the smallest IP range you can have is /28, which provides 16 IP addresses. The largest IP range you can have is a /16, which provides 65,536 IP addresses.
