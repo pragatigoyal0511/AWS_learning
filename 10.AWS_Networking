@@ -129,3 +129,122 @@ jaise hamara modem hamare computer ko internet se conne ct karta hai, vaise inte
 -> Virtual private Gateway
 
 ab we wnat ki sirf office ka traffic aana chahyea hum VPG use karnege.
+
+
+
+
+-> AWS VPC security:
+
+We have NACL and Security group
+
+VPC (your private network)
+ ├── Subnets
+ │    ├── Network ACL (applies to entire subnet)
+ │    └── EC2 instances (each has a Security Group)
+
+So:
+
+Network ACL (NACL) = security gate for the whole subnet
+Security Group (SG) = security gate for individual EC2 instances (or ENIs)
+
+They both filter traffic, but at different layers
+
+
+->Newtork ACL
+🔹 Full form: Network Access Control List
+🔹 Applies to: The subnet level
+
+Every subnet in a VPC is associated with one NACL (either custom or default).
+
+It acts like a firewall at the boundary of your subnet.
+It checks traffic entering or leaving the subnet.
+
+
+| Feature          | Description                                                 |
+| ---------------- | ----------------------------------------------------------- |
+| Level            | **Subnet level**                                            |
+| Controls         | **Inbound + Outbound traffic**                              |
+| Rules type       | **Numbered rules** (like rule 100, 110, etc.)               |
+| Rule evaluation  | From lowest number upward; first match wins                 |
+| Stateful?        | ❌ **Stateless** — return traffic must be explicitly allowed |
+| Default behavior | Deny all traffic unless allowed                             |
+| Use case         | Add one more security layer around subnets                  |
+
+
+Example
+
+Say you have:
+
+Public subnet (for web servers)
+
+Private subnet (for databases)
+
+You could set NACLs like:
+| Subnet  | Allowed Inbound                  | Allowed Outbound      |
+| ------- | -------------------------------- | --------------------- |
+| Public  | HTTP (80), HTTPS (443), SSH (22) | All                   |
+| Private | Only from public subnet          | Only to public subnet |
+
+
+So NACL = border guard for that subnet 🛡️
+
+
+->Security Group (SG)
+
+🔹 Applies to: The instance (EC2, Lambda ENI, etc.) level
+🔹 Think of it like a personal firewall for each resource.
+
+It controls what traffic can reach or leave a specific EC2 instance.
+
+Security Group Characteristics:
+
+| Feature          | Description                                                            |
+| ---------------- | ---------------------------------------------------------------------- |
+| Level            | **Instance (ENI)** level                                               |
+| Controls         | **Inbound + Outbound traffic**                                         |
+| Rule type        | No numbers; all rules are checked                                      |
+| Stateful?        | ✅ **Stateful** — if inbound is allowed, return traffic is auto allowed |
+| Default behavior | Deny all inbound, allow all outbound                                   |
+| Use case         | Protect individual EC2s, load balancers, etc.                          |
+
+
+Example:
+For your web server EC2,
+you can have an SG like:
+| Direction | Allowed Traffic            | Description                        |
+| --------- | -------------------------- | ---------------------------------- |
+| Inbound   | TCP 80 (HTTP), 443 (HTTPS) | Allow web access                   |
+| Inbound   | TCP 22 (SSH) from admin IP | Allow SSH only for admin           |
+| Outbound  | All                        | Let EC2 call APIs or update itself |
+
+
+So SG = personal firewall for your EC2 instance.
+
+5️⃣ Why We Need Both
+
+✅ NACLs protect the entire subnet —
+like a gate outside your colony.
+If traffic is not allowed there, it never even reaches your building.
+
+✅ Security Groups protect individual houses (EC2s) inside —
+they add one more firewall around your instance.
+
+Together:
+NACL = outer wall of your subnet
+SG = inner wall around each instance
+
+This two-layer defense is called defense-in-depth — if one rule misconfigured, the other still protects you.
+
+
+6️⃣ Analogy (Simple & Memorable)
+
+🏠 Think of your VPC as a residential society:
+
+NACL = Gate at the entrance to the society → controls which cars can enter or leave your colony.
+Security Group = Gate at your own house → controls who can ring your doorbell or enter your home.
+
+So:
+If your colony gate blocks all unknown vehicles → they never reach your house.
+If someone gets past the colony gate → your house gate (security group) still checks them again.
+
+Two layers of security — for safety and control
